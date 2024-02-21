@@ -41,6 +41,14 @@ namespace Mission06_Hawkins.Controllers
             return View("Confirmation", response);
         }
 
+        public IActionResult MovieList()
+        {
+            var movies = _context.Movies
+                .OrderBy(x => x.Title).ToList();
+
+            return View(movies);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
