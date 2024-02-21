@@ -16,6 +16,7 @@ namespace Mission06_Hawkins.Models
         [Required]
         public string Title { get; set; }
         [Required]
+        [Range(1888, int.MaxValue, ErrorMessage = "Year must be greater than 1888.")]
         public int Year { get; set; }
         public string? Director { get; set; }
         public string? Rating { get; set; }
