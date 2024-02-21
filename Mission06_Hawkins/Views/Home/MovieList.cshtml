@@ -7,8 +7,8 @@
 <table class="table table-striped table-bordered">
     <thead class="thead-dark">
         <tr>
-            <th>Movie ID</th>
-            <th>Category ID</th>
+            @* <th>Movie ID</th> *@
+            <th>Category</th>
             <th>Title</th>
             <th>Year</th>
             <th>Director</th>
@@ -21,22 +21,28 @@
     </thead>
 
     <tbody>
-        @foreach (var m in Model)
+        @foreach (var x in Model)
         {
             <tr>
-                <td>@m.MovieID</td>
-                <td>@m.CategoryID</td>
-                <td>@m.Title</td>
-                <td>@m.Year</td>
-                <td>@m.Director</td>
-                <td>@m.Rating</td>
-                <td>@m.Edited</td>
-                <td>@m.LentTo</td>
-                <td>@m.CopiedToPlex</td>
-                <td>@m.Notes</td>
+                @* <td>@x.MovieID</td> *@
+                @foreach (Categories c in ViewBag.ViewCategory)
+                {
+                    if (c.CategoryID == x.CategoryID)
+                    {
+                        <td>@c.Category</td>
+                    }
+                }
+                <td>@x.Title</td>
+                <td>@x.Year</td>
+                <td>@x.Director</td>
+                <td>@x.Rating</td>
+                <td>@x.Edited</td>
+                <td>@x.LentTo</td>
+                <td>@x.CopiedToPlex</td>
+                <td>@x.Notes</td>
 
-                <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@m.MovieID">Edit</a></td>
-                <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@m.MovieID">Delete</a></td>
+                <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieID">Edit</a></td>
+                <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.MovieID">Delete</a></td>
             </tr>
         }
     </tbody>

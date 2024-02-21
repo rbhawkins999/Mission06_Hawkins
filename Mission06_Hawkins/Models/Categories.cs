@@ -7,6 +7,7 @@ namespace Mission06_Hawkins.Models
         [Key]
         [Required]
         public int CategoryID { get; set; }
+        [Required]
         public string Category { get; set; }
     }
 }

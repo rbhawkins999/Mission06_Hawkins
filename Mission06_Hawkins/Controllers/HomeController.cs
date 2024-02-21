@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mission06_Hawkins.Models;
 using SQLitePCL;
 using System.Diagnostics;
@@ -47,7 +48,11 @@ namespace Mission06_Hawkins.Controllers
 
         public IActionResult MovieList()
         {
-            var movies = _context.Movies
+            ViewBag.ViewCategory = _context.Categories
+                .OrderBy(x => x.Category)
+                .ToList();
+
+            var movies = _context.Movies.Include(x => x.Category)
                 .OrderBy(x => x.Title).ToList();
 
             return View(movies);
