@@ -5,16 +5,14 @@
 <h1>Enter a movie into the Movie Collection!</h1>
 
 <form method="post">
-    <label asp-for="CategoryID">Category</label>
-    <select asp-for="CategoryID" multiple />
-        <option value="Miscellaneous">1</option>
-        <option value="Drama">2</option>
-        <option value="Television">3</option>
-        <option value="Horror/Suspense">4</option>
-        <option value="Comedy">5</option>
-        <option value="Family">6</option>
-        <option value="Action/Adventure">7</option>
-        <option value="VHS">8</option>
+    
+    <select asp-for="CategoryID" />
+        <option value = "">Select a Category</option>
+        @foreach (Categories c in ViewBag.Categories)
+        {
+            <option value="@c.CategoryID">@c.Category</option>
+        }
+    </select>
     <br />
     <label asp-for="Title">Title</label>
     <input asp-for="Title" required />

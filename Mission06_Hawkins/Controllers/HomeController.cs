@@ -29,6 +29,10 @@ namespace Mission06_Hawkins.Controllers
         [HttpGet]
         public IActionResult AddMovies()
         {
+            ViewBag.Categories = _context.Categories
+                .OrderBy(c => c.Category)
+                .ToList();
+
             return View();
         }
 

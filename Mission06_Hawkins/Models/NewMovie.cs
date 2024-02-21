@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission06_Hawkins.Models
 {
@@ -9,7 +10,9 @@ namespace Mission06_Hawkins.Models
         [Key]
         [Required]
         public int MovieID { get; set; }
+        [ForeignKey("CategoryID")]
         public int? CategoryID { get; set; }
+        public Categories Category { get; set; }
         [Required]
         public string Title { get; set; }
         [Required]
