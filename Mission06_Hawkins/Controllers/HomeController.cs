@@ -7,7 +7,7 @@ namespace Mission06_Hawkins.Controllers
 {
     public class HomeController : Controller
     {
-        
+
 
         private MoviesContext _context;
 
@@ -53,16 +53,44 @@ namespace Mission06_Hawkins.Controllers
             return View(movies);
         }
 
+        [HttpGet]
         public IActionResult Edit(int id)
         {
-            var recrdToEdit = _context.Movies
-                .Where(x => x.MovieID == id);
+            var recordToEdit = _context.Movies
+                .Single(x => x.MovieID == id);
 
             ViewBag.Categories = _context.Categories
                 .OrderBy(c => c.Category)
                 .ToList();
 
-            return View("AddMovies");
+            return View("AddMovies", recordToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(NewMovie updatedInfo)
+        {
+            _context.Update(updatedInfo);
+            _context.SaveChanges();
+
+            return RedirectToAction("MovieList");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var recordToDelete = _context.Movies
+                .Single(x => x.MovieID == id);
+
+            return View(recordToDelete);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(NewMovie deletedInfo)
+        {
+            _context.Movies.Remove(deletedInfo);
+            _context.SaveChanges();
+
+            return RedirectToAction("MovieList");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

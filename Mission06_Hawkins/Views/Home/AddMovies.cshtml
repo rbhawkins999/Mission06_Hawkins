@@ -5,6 +5,8 @@
 <h1>Enter a movie into the Movie Collection!</h1>
 
 <form method="post">
+ 
+    <input type="hidden" asp-for="MovieID" />
     
     <select asp-for="CategoryID" />
         <option value = "">Select a Category</option>
