@@ -53,6 +53,18 @@ namespace Mission06_Hawkins.Controllers
             return View(movies);
         }
 
+        public IActionResult Edit(int id)
+        {
+            var recrdToEdit = _context.Movies
+                .Where(x => x.MovieID == id);
+
+            ViewBag.Categories = _context.Categories
+                .OrderBy(c => c.Category)
+                .ToList();
+
+            return View("AddMovies");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
