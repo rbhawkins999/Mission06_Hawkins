@@ -10,7 +10,7 @@
     
     <label asp-for="CategoryID">Category</label>
     <select asp-for="CategoryID">
-        <option value = "" selected disabled>Select a Category</option>
+        <option value = " " >Select a Category</option>
         @foreach (Categories c in ViewBag.Categories)
         {
             <option value="@c.CategoryID">@c.Category</option>
@@ -32,8 +32,9 @@
     <br />
     <label asp-for="Edited">Edited</label>
     <select asp-for="Edited" >
-        <option value="0">No</option>
-        <option value="1">Yes</option>
+        <option value="" disbled selected>Select</option>
+        <option value="false">No</option>
+        <option value="true">Yes</option>
     </select>
     <br />
     <label asp-for="LentTo">Lent To</label>
@@ -41,8 +42,8 @@
     <br />
     <label asp-for="CopiedToPlex">Copied To Plex</label>
     <select asp-for="CopiedToPlex" >
-        <option value="0">No</option>
-        <option value="1">Yes</option>
+        <option value="false">No</option>
+        <option value="true">Yes</option>
     </select>
     <br />
     <label asp-for="Notes">Notes</label>
@@ -50,4 +51,6 @@
     <br />
 
     <button type="submit">Add Movie</button>
+
+    <div asp-validation-summary="All" class="validation-summary-errors"></div>
 </form>

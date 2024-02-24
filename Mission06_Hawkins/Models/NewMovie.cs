@@ -20,11 +20,11 @@ namespace Mission06_Hawkins.Models
         public int Year { get; set; }
         public string? Director { get; set; }
         public string? Rating { get; set; }
-        [Required]
+        [Required( ErrorMessage = "Enter yes or no for the edited field.")]
         public bool Edited { get; set; }
         public string? LentTo { get; set; }
         [Required]
-        public int CopiedToPlex { get; set; }
+        public bool CopiedToPlex { get; set; }
         public string? Notes { get; set; }
     }
 }

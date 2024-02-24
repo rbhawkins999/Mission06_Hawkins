@@ -40,10 +40,20 @@ namespace Mission06_Hawkins.Controllers
         [HttpPost]
         public IActionResult AddMovies(NewMovie response)
         {
-            _context.Movies.Add(response);
-            _context.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _context.Movies.Add(response);
+                _context.SaveChanges();
+                return View("Confirmation", response);
+            }
+            else
+            {
+                ViewBag.Categories = _context.Categories
+                    .OrderBy(c => c.Category)
+                    .ToList();
 
-            return View("Confirmation", response);
+                return View(response);
+            }
         }
 
         public IActionResult MovieList()
