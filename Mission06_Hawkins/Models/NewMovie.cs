@@ -12,7 +12,7 @@ namespace Mission06_Hawkins.Models
         public int MovieID { get; set; }
         [ForeignKey("CategoryID")]
         public int? CategoryID { get; set; }
-        public Categories Category { get; set; }
+        public Categories? Category { get; set; }
         [Required]
         public string Title { get; set; }
         [Required]

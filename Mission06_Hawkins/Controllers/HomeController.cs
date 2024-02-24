@@ -34,7 +34,7 @@ namespace Mission06_Hawkins.Controllers
                 .OrderBy(c => c.Category)
                 .ToList();
 
-            return View();
+            return View("AddMovies", new NewMovie());
         }
 
         [HttpPost]
